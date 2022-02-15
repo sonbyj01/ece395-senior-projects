@@ -3,10 +3,18 @@ import rospy
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 import cv2
+from cv_bridge import CvBridge, CvBridgeError
+
+bridge = CvBridge()
 
 def callback(data):
-    cv2.imshow("zed", data.data)
-    rospy.loginfo(rospy.get_caller_id())
+    try:
+        cv_image = bridge.imgmsg_to_cv2(data, 'bgr8')
+    except CvBridgeError as e:
+        print(e)
+
+    cv2.imshow('zed', cv_image)
+    cv2.waitKey(3)
     
 def listener():
 
@@ -17,7 +25,7 @@ def listener():
     # run simultaneously.
     rospy.init_node('listener-zed', anonymous=True)
 
-    rospy.Subscriber("rgb/image_rect_color", String, callback)
+    rospy.Subscriber("/videofile/image_raw", Image, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
