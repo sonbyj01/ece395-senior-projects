@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -164,7 +165,7 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
-catkin_install_python(PROGRAMS src/talker.py src/listener.py
+catkin_install_python(PROGRAMS src/talker.py src/listener.py src/listener-zed.py src/test_video_resource.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
