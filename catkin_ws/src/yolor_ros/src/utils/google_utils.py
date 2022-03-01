@@ -27,6 +27,7 @@ def attempt_download(weights):
 
         try:  # GitHub
             url = 'https://github.com/WongKinYiu/yolor/releases/download/v1.0/' + file
+            url = 'https://github.com/WongKinYiu/yolor/releases/download/weights/yolor-p6-paper-541.pt'
             print('Downloading %s to %s...' % (url, weights))
             torch.hub.download_url_to_file(url, weights)
             assert os.path.exists(weights) and os.path.getsize(weights) > 1E6  # check

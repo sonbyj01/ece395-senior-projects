@@ -25,7 +25,8 @@ def listener():
     # run simultaneously.
     rospy.init_node('listener-zed', anonymous=True)
 
-    rospy.Subscriber("/videofile/image_raw", Image, callback)
+    #rospy.Subscriber("/videofile/image_raw", Image, callback)
+    rospy.Subscriber("/zed2i/zed_node/rgb/image_rect_color", Image, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()

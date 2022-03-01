@@ -203,7 +203,11 @@ class LoadImages:  # for inference
         else:
             # Read image
             self.count += 1
-            img0 = cv2.imread(path)  # BGR
+            # img0 = cv2.imread(path)  # BGR
+            try:
+                img0 = bridge.imgmsg_to_cv2(data, 'bgr8')
+            except CvBridgeError as e:
+                print(e)
             assert img0 is not None, 'Image Not Found ' + path
             print('image %g/%g %s: ' % (self.count, self.nf, path), end='')
 

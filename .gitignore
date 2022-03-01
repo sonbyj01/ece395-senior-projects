@@ -1,5 +1,6 @@
 dataset/
 *.pt
+*.bag
 # catkin stuff
 devel/
 logs/

@@ -1,0 +1,25 @@
+---
+version: '3'
+
+services:
+    yolor:
+        build: .
+        container_name: object-detection
+        tty: true
+        ipc: host
+        privileged: true
+        environment:
+            - 'DISPLAY=$DISPLAY'
+            - 'QT_X11_NO_MITSHM=1'
+            - 'ROS_HOSTNAME=yolor'
+            - 'ROS_MASTER_URI=http://eclipse:11311'
+        volumes:
+            - '/tmp/.X11-unix:/tmp/.X11-unix'
+            - '../catkin_ws:/app/catkin_ws'
+            - '../dataset/coco:/app/coco'
+        restart: unless-stopped
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - capabilities: [gpu]
