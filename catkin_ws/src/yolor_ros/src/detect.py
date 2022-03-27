@@ -165,8 +165,8 @@ def detect(data, save_img=False):
 def listener():
     rospy.init_node('yolor', anonymous=True)
 
-    #rospy.Subscriber('/videofile/image_raw', Image, detect)
-    rospy.Subscriber('/zed2i/zed_node/rgb/image_rect_color', Image, detect)
+    rospy.Subscriber('/videofile/image_raw', Image, detect)
+    #rospy.Subscriber('/zed2i/zed_node/rgb/image_rect_color', Image, detect)
 
     rospy.spin()
 

@@ -30,5 +30,9 @@
         <arg name="stop_frame" default="-1"/>
         <!-- visualize on an image_view window the stream generated -->
         <arg name="visualize" value="true" />
+        <!-- force width and height, 0 means no forcing -->
+	     <arg name="width" value="1280"/>
+	     <arg name="height" value="0"/>
+		
    </include>
 </launch>

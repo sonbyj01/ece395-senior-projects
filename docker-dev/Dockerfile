@@ -1,4 +1,5 @@
-FROM nvcr.io/nvidia/pytorch:22.02-py3
+#FROM nvcr.io/nvidia/pytorch:22.02-py3
+FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
 
 ARG DEBIAN_FRONTEND=noninteractive
 

@@ -15,8 +15,8 @@ services:
             - 'ROS_MASTER_URI=http://eclipse:11311'
         volumes:
             - '/tmp/.X11-unix:/tmp/.X11-unix'
-            - '../catkin_ws:/app/catkin_ws'
-            - '../dataset/coco:/app/coco'
+            # - '../catkin_ws:/app/catkin_ws'
+            # - '../dataset/coco:/app/coco'
         restart: unless-stopped
         deploy:
             resources:
