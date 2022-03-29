@@ -2,7 +2,14 @@
 version: '3'
 
 services:
-    dev-env:
+    master:
+        image: ros:noetic-ros-core-focal
+        container_name: master
+        tty: true
+        ipc: host
+        privileged: true
+        restart: unless-stopped
+    dev:
         build: .
         container_name: dev
         tty: true
