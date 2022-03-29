@@ -4,7 +4,7 @@ version: '3'
 services:
     dev-env:
         build: .
-        container_name: dev-env
+        container_name: dev
         tty: true
         ipc: host
         privileged: true
@@ -13,7 +13,7 @@ services:
             - 'QT_X11_NO_MITSHM=1'
         volumes:
             - '/tmp/.X11-unix:/tmp/.X11-unix'
-            - '../src:/app'
+            - '../yolor:/yolor'
         restart: unless-stopped
         deploy:
             resources:
