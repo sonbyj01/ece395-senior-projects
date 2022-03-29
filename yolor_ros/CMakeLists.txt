@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(yolor_ros)
 
+set(Torch_DIR "/home/user/miniconda/lib/python3.8/site-packages/torch/share/cmake/Torch")
+
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -16,7 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(Torch REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -166,9 +168,10 @@ include_directories(
 # )
 
 catkin_install_python(PROGRAMS 
-  src/talker.py 
-  src/listener.py 
-  src/detect.py
+  src/yolor/talker.py 
+  src/yolor/listener.py 
+  src/yolor/detect.py
+  src/yolor/detect-node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

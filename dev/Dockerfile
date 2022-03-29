@@ -58,6 +58,8 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 RUN sudo apt update && \
     sudo apt install -y zip htop screen libgl1-mesa-glx vim
 
+RUN pip install Cpython opencv-python tqdm scipy pycocotools pyyaml
+
 # RUN pip install seaborn thop
 
 # RUN cd /app && \
