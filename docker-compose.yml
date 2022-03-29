@@ -3,24 +3,26 @@ version: '3'
 
 services:
     master:
+        # build: master/.
         image: ros:noetic-ros-core-focal
         container_name: master
         tty: true
-        ipc: host
-        privileged: true
         restart: unless-stopped
+        # command: stdbuf -o L roscore
     dev:
-        build: .
+        build: dev/.
         container_name: dev
         tty: true
         ipc: host
         privileged: true
         environment:
+            - 'ROS_HOSTNAME=dev'
+            - 'ROS_MASTER_URI=http://master:11311'
             - 'DISPLAY=$DISPLAY'
             - 'QT_X11_NO_MITSHM=1'
         volumes:
             - '/tmp/.X11-unix:/tmp/.X11-unix'
-            - '../yolor:/yolor'
+            - './yolor_ros:/app/catkin_ws/src/yolor'
         restart: unless-stopped
         deploy:
             resources:
